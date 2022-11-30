@@ -10,11 +10,10 @@
 
 
 
-import {LitElement, html} from 'lit-element';
-import {customElement} from 'lit/decorators.js';
+import {LitElement, html} from 'lit';
 
 
-class MyView1 extends LitElement {
+export class MyView1 extends LitElement {
   render() {
     return html`
   
@@ -28,4 +27,4 @@ class MyView1 extends LitElement {
   }
 }
 
-window.customElements.define('my-view1', MyView1);
+customElements.define('my-view1', MyView1);

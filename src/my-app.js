@@ -23,6 +23,7 @@ import '@polymer/iron-selector/iron-selector.js';
 import '@polymer/paper-icon-button/paper-icon-button.js';
 import './my-icons.js';
 
+
 // Gesture events like tap and track generated from touch will not be
 // preventable, allowing for better scrolling performance.
 setPassiveTouchGestures(true);
@@ -170,4 +171,4 @@ class MyApp extends PolymerElement {
   }
 }
 
-window.customElements.define('my-app', MyApp);
+customElements.define('my-app', MyApp);
