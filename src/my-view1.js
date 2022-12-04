@@ -8,23 +8,34 @@
  * subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
  */
 
-
-
-import {LitElement, html} from 'lit';
-
+import { LitElement, html } from "lit";
 
 export class MyView1 extends LitElement {
   render() {
     return html`
-  
-      <div class="card">
-        <div class="circle">1</div>
-        <h1>View One</h1>
-        <p>Ut labores minimum atomorum pro. Laudem tibique ut has.</p>
-        <p>Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.Cu mei vide viris gloriatur, at populo eripuit sit.</p>
+      <div class="field">
+        <label class="label">Name</label>
+        <div class="control">
+          <input class="input" type="text" placeholder="e.g Alex Smith" />
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">Email</label>
+        <div class="control">
+          <input
+            class="input"
+            type="email"
+            placeholder="e.g. alexsmith@gmail.com"
+          />
+        </div>
+      </div>
+
+      <div class="control">
+        <button class="button is-link is-light">Submit</button>
       </div>
     `;
   }
 }
 
-customElements.define('my-view1', MyView1);
+customElements.define("my-view1", MyView1);
