@@ -11,6 +11,12 @@ class MyView3 extends LitElement {
     };
   }
 
+  constructor() {
+    super();
+    this.todos = []; // Initialize the todos property as an empty array
+  }
+
+
   firstUpdated(changedProperties) {
      // Make a request to the specified URL
      fetch('https://jsonplaceholder.typicode.com/todos?_limit=5')
