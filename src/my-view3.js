@@ -42,9 +42,9 @@ class MyView3 extends LitElement {
      fetch('https://jsonplaceholder.typicode.com/todos?_limit=5')
      .then(response => response.json()) // Parse the response as JSON
      .then(data => {
-       // Display the response data in the console
-       console.log(data);
-     });
+      // Set the todos property with the response data
+      this.todos = data;
+    });
     
   }
 }
