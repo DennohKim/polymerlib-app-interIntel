@@ -16,6 +16,26 @@ class MyView3 extends LitElement {
     this.todos = []; // Initialize the todos property as an empty array
   }
 
+  render() {
+    return html`
+      <style>
+        /* CSS styles for the todo cards */
+        .card {
+          margin: 10px;
+          padding: 10px;
+          border: 1px solid #ccc;
+        }
+      </style>
+      <h1>My Element</h1>
+      ${this.todos.map(todo => html`
+        <div class="card">
+          <h2>${todo.title}</h2>
+          <p>Complete: ${todo.complete}</p>
+        </div>
+      `)}
+    `;
+  }
+
 
   firstUpdated(changedProperties) {
      // Make a request to the specified URL
