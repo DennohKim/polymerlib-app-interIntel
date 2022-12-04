@@ -26,11 +26,11 @@ class MyView3 extends LitElement {
           border: 1px solid #ccc;
         }
       </style>
-      <h1>My Element</h1>
+      <h1>My Todos</h1>
       ${this.todos.map(todo => html`
         <div class="card">
           <h2>${todo.title}</h2>
-          <p>Complete: ${todo.complete}</p>
+          <p>Complete: ${todo.completed}</p>
         </div>
       `)}
     `;
