@@ -10,32 +10,40 @@
 
 import { LitElement, html } from "lit";
 
+
 export class MyView1 extends LitElement {
   render() {
     return html`
-      <div class="field">
-        <label class="label">Name</label>
-        <div class="control">
-          <input class="input" type="text" placeholder="e.g Alex Smith" />
-        </div>
-      </div>
-
-      <div class="field">
-        <label class="label">Email</label>
-        <div class="control">
-          <input
-            class="input"
-            type="email"
-            placeholder="e.g. alexsmith@gmail.com"
-          />
-        </div>
-      </div>
-
-      <div class="control">
-        <button class="button is-link is-light">Submit</button>
-      </div>
+      <form @submit=${this._onSubmit}>
+        <label>Name: <input type="text" name="name"></label>
+        <label>Email: <input type="email" name="email"></label>
+        <label>Phone: <input type="tel" name="phone"></label>
+        <button type="submit">Submit</button>
+      </form>
     `;
   }
+
+  _onSubmit(event) {
+    // Prevent the default form submission behavior
+    event.preventDefault();
+
+    // Get the form element
+    const form = event.target;
+
+    // Get the user's input from the form
+    const name = form.elements.name.value;
+    const email = form.elements.email.value;
+    const phone = form.elements.phone.value;
+
+    // Display the user's input in the console
+    console.log(`Name: ${name}`);
+    console.log(`Email: ${email}`);
+    console.log(`Phone: ${phone}`);
+
+    // Display the user's input in an alert box
+    alert(`Name: ${name}\nEmail: ${email}\nPhone: ${phone}`);
+  }
+ 
 }
 
 customElements.define("my-view1", MyView1);
