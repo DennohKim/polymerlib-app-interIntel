@@ -1,35 +1,53 @@
-/**
- * @license
- * Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
- * This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
- * The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
- * The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
- * Code distributed by Google as part of the polymer project is also
- * subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
- */
+import { LitElement, html } from 'lit-element';
 
-import { PolymerElement, html } from '@polymer/polymer/polymer-element.js';
-import './shared-styles.js';
-
-class MyView3 extends PolymerElement {
-  static get template() {
+class MyView3 extends LitElement {
+  render() {
     return html`
-      <style include="shared-styles">
-        :host {
-          display: block;
-
-          padding: 10px;
+      <style>
+        /* CSS animations and transitions */
+        .card {
+          /* Add a transition effect when hovering over the card */
+          transition: transform 0.3s;
+        }
+        .card.animated {
+          /* Scale up the card when the 'animated' class is added */
+          transform: scale(1.1);
+        }
+        .image {
+          /* Fade in the image when it is loaded */
+          opacity: 0;
+          transition: opacity 0.3s;
+        }
+        .image.loaded {
+          /* Set the image's opacity to 1 when it is loaded */
+          opacity: 1;
         }
       </style>
-
-      <div class="card">
-        <div class="circle">3</div>
-        <h1>View Three</h1>
-        <p>Modus commodo minimum eum te, vero utinam assueverit per eu.</p>
-        <p>Ea duis bonorum nec, falli paulo aliquid ei eum.Has at minim mucius aliquam, est id tempor laoreet.Pro saepe pertinax ei, ad pri animal labores suscipiantur.</p>
+      <div class="card" @click=${this._onCardClick}>
+        <img class="image" src="https://images.unsplash.com/photo-1661961111184-11317b40adb2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1172&q=80" @load=${this._onImageLoad}>
+        <h1>My Element</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
       </div>
+      <button @click=${this._onButtonClick}>Animate</button>
     `;
   }
-}
 
-window.customElements.define('my-view3', MyView3);
+  _onCardClick(event) {
+    // Add the 'animated' class to the card to trigger the animation
+    event.target.classList.add('animated');
+  }
+
+  _onImageLoad(event) {
+    // Add the 'loaded' class to the image when it is loaded
+    event.target.classList.add('loaded');
+  }
+
+  _onButtonClick() {
+    // Get the card element
+    const card = this.shadowRoot.querySelector('.card');
+
+    // Add the 'animated' class to the card to trigger the animation
+    card.classList.add('animated');
+  }
+}
+customElements.define('my-view3', MyView3);
